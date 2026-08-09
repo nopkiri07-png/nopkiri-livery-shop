@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Nopkiri Livery Shop</title>
+<title>Nopkiri Livery Shop | Cyber Gaming</title>
 
 <style>
 *{
@@ -22,35 +22,58 @@ body{
   color:#fff;
   min-height:100vh;
   overflow-x:hidden;
-
-  background:
-    radial-gradient(circle at 50% -10%,#173b55 0,#0a1220 35%,#03050a 75%);
+  background:#03040a;
 }
+
+/* CYBER GRID BACKGROUND */
 
 body::before{
   content:"";
   position:fixed;
   inset:0;
+  z-index:-3;
   pointer-events:none;
-  z-index:-1;
 
   background:
-    radial-gradient(circle at 15% 20%,rgba(0,229,255,.14),transparent 25%),
-    radial-gradient(circle at 85% 35%,rgba(124,77,255,.13),transparent 25%),
-    radial-gradient(circle at 50% 90%,rgba(255,47,146,.10),transparent 30%);
+    linear-gradient(rgba(0,229,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,229,255,.035) 1px,transparent 1px);
 
-  animation:backgroundGlow 6s ease-in-out infinite alternate;
+  background-size:40px 40px;
+  animation:gridMove 12s linear infinite;
 }
 
-@keyframes backgroundGlow{
+@keyframes gridMove{
+  from{
+    background-position:0 0;
+  }
+  to{
+    background-position:40px 40px;
+  }
+}
+
+/* NEON LIGHTS */
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  pointer-events:none;
+
+  background:
+    radial-gradient(circle at 15% 20%,rgba(0,229,255,.18),transparent 25%),
+    radial-gradient(circle at 85% 30%,rgba(125,60,255,.18),transparent 27%),
+    radial-gradient(circle at 50% 90%,rgba(255,0,150,.12),transparent 30%);
+
+  animation:cyberPulse 5s ease-in-out infinite alternate;
+}
+
+@keyframes cyberPulse{
   from{
     opacity:.55;
-    transform:scale(1);
   }
-
   to{
     opacity:1;
-    transform:scale(1.08);
   }
 }
 
@@ -62,14 +85,14 @@ header{
   top:0;
   z-index:100;
 
-  background:rgba(3,6,14,.82);
+  background:rgba(2,5,12,.84);
   backdrop-filter:blur(18px);
 
-  border-bottom:1px solid rgba(0,229,255,.45);
+  border-bottom:1px solid #00e5ff;
 
   box-shadow:
-    0 0 12px rgba(0,229,255,.25),
-    0 0 35px rgba(0,229,255,.10);
+    0 0 10px rgba(0,229,255,.7),
+    0 0 30px rgba(0,229,255,.15);
 }
 
 .nav{
@@ -84,61 +107,69 @@ header{
 }
 
 .logo{
+  color:#00e5ff;
   font-size:21px;
   font-weight:900;
-  color:#00e5ff;
   white-space:nowrap;
 
   text-shadow:
     0 0 5px #00e5ff,
-    0 0 15px rgba(0,229,255,.8),
-    0 0 30px rgba(0,229,255,.45);
+    0 0 15px #00e5ff,
+    0 0 30px rgba(0,229,255,.5);
 }
 
 .logo span{
   display:block;
-  margin-top:3px;
+  margin-top:4px;
 
+  color:#899bb8;
   font-size:9px;
   letter-spacing:2px;
-  color:#9aa9c7;
 }
 
 .title{
   flex:1;
   text-align:center;
 
-  font-size:17px;
-  font-weight:800;
-  color:#e8f8ff;
+  font-size:16px;
+  font-weight:900;
+  letter-spacing:1px;
+
+  color:#eafcff;
 
   text-shadow:
-    0 0 6px rgba(255,255,255,.6),
-    0 0 15px rgba(0,229,255,.45);
+    0 0 8px rgba(255,255,255,.7),
+    0 0 18px #00e5ff;
 }
 
 .cart{
   font-size:27px;
-  cursor:pointer;
 
   filter:
     drop-shadow(0 0 5px #00e5ff)
-    drop-shadow(0 0 12px rgba(0,229,255,.7));
+    drop-shadow(0 0 15px #00e5ff);
 
-  transition:.25s;
+  animation:cartGlow 2s infinite alternate;
 }
 
-.cart:hover{
-  transform:scale(1.2);
+@keyframes cartGlow{
+  from{
+    filter:drop-shadow(0 0 4px #00e5ff);
+  }
+  to{
+    filter:
+      drop-shadow(0 0 10px #00e5ff)
+      drop-shadow(0 0 20px #7c4dff);
+  }
 }
 
 .menu{
-  font-size:27px;
   color:#00e5ff;
+  font-size:27px;
 
   text-shadow:
-    0 0 6px #00e5ff,
-    0 0 15px #00e5ff;
+    0 0 8px #00e5ff,
+    0 0 20px #00e5ff;
 }
 
 
@@ -147,52 +178,35 @@ header{
 .hero{
   max-width:1000px;
   margin:auto;
-  padding:75px 18px 40px;
-
+  padding:75px 18px 45px;
   text-align:center;
 }
 
-.tag{
+.cyber-label{
   display:inline-block;
 
-  padding:9px 17px;
+  padding:10px 18px;
 
   border:1px solid #00e5ff;
-  border-radius:30px;
+  border-radius:4px;
 
   color:#00e5ff;
   background:rgba(0,229,255,.05);
 
-  font-size:12px;
+  font-size:11px;
   font-weight:900;
-  letter-spacing:2px;
+  letter-spacing:3px;
 
   box-shadow:
-    0 0 8px rgba(0,229,255,.7),
+    0 0 8px #00e5ff,
     inset 0 0 10px rgba(0,229,255,.1);
-
-  animation:tagGlow 2s ease-in-out infinite alternate;
-}
-
-@keyframes tagGlow{
-  from{
-    box-shadow:
-      0 0 5px rgba(0,229,255,.5),
-      inset 0 0 5px rgba(0,229,255,.1);
-  }
-
-  to{
-    box-shadow:
-      0 0 18px rgba(0,229,255,.9),
-      inset 0 0 12px rgba(0,229,255,.2);
-  }
 }
 
 .hero h1{
-  margin:25px 0 0;
+  margin:25px 0 18px;
 
-  font-size:clamp(40px,8vw,70px);
-  line-height:1;
+  font-size:clamp(42px,9vw,76px);
+  line-height:.95;
   font-weight:1000;
 
   background:
@@ -200,7 +214,7 @@ header{
       90deg,
       #00e5ff,
       #7c4dff,
-      #ff2f92,
+      #ff1493,
       #00e5ff
     );
 
@@ -211,36 +225,32 @@ header{
 
   color:transparent;
 
-  animation:titleGradient 5s linear infinite;
+  animation:titleMove 5s linear infinite;
 
   filter:
-    drop-shadow(0 0 8px rgba(0,229,255,.35));
+    drop-shadow(0 0 8px rgba(0,229,255,.45));
 }
 
-@keyframes titleGradient{
-  0%{
-    background-position:0% 50%;
+@keyframes titleMove{
+  from{
+    background-position:0 50%;
   }
-
-  100%{
+  to{
     background-position:300% 50%;
   }
 }
 
 .hero p{
-  max-width:700px;
-  margin:23px auto 0;
+  max-width:720px;
+  margin:auto;
 
-  color:#a6b5d0;
+  color:#9caccc;
   font-size:18px;
   line-height:1.6;
-
-  text-shadow:
-    0 0 8px rgba(0,229,255,.2);
 }
 
 
-/* SEARCH */
+/* CONTROLS */
 
 .controls{
   max-width:1100px;
@@ -249,26 +259,26 @@ header{
   padding:0 18px;
 
   display:flex;
-  gap:14px;
+  gap:15px;
 }
 
 input,
 select{
   width:100%;
 
-  padding:17px 18px;
+  padding:17px;
 
-  border-radius:15px;
+  border-radius:5px;
 
-  border:1px solid #28425c;
-
-  background:rgba(7,13,25,.88);
-
-  color:#fff;
-
-  font-size:16px;
+  border:1px solid #25415c;
 
   outline:none;
+
+  background:rgba(5,10,20,.9);
+
+  color:white;
+
+  font-size:16px;
 
   box-shadow:
     0 0 8px rgba(0,229,255,.08),
@@ -277,39 +287,38 @@ select{
   transition:.3s;
 }
 
-input::placeholder{
-  color:#687a98;
-}
-
 input:focus,
 select:focus{
   border-color:#00e5ff;
 
   box-shadow:
     0 0 8px #00e5ff,
-    0 0 20px rgba(0,229,255,.35),
-    inset 0 0 12px rgba(0,229,255,.08);
+    0 0 22px rgba(0,229,255,.3);
+}
+
+input::placeholder{
+  color:#617493;
 }
 
 
-/* PRODUCTS */
+/* PRODUCT GRID */
 
 .grid{
   max-width:1100px;
   margin:auto;
 
-  padding:10px 18px 70px;
+  padding:10px 18px 80px;
 
   display:grid;
 
   grid-template-columns:
     repeat(auto-fit,minmax(270px,1fr));
 
-  gap:24px;
+  gap:25px;
 }
 
 
-/* CARD */
+/* PRODUCT CARD */
 
 .card{
   position:relative;
@@ -317,100 +326,61 @@ select:focus{
 
   padding:12px;
 
-  border-radius:20px;
-
-  border:1px solid #263c57;
+  border:1px solid #1d4058;
+  border-radius:8px;
 
   background:
     linear-gradient(
       145deg,
-      rgba(18,29,50,.96),
-      rgba(5,9,18,.97)
+      rgba(12,23,42,.96),
+      rgba(3,7,15,.98)
     );
 
   box-shadow:
-    0 10px 30px rgba(0,0,0,.45),
+    0 12px 35px rgba(0,0,0,.5),
     0 0 8px rgba(0,229,255,.08);
 
-  transition:
-    transform .3s,
-    border-color .3s,
-    box-shadow .3s;
-}
-
-.card::before{
-  content:"";
-
-  position:absolute;
-
-  width:180px;
-  height:180px;
-
-  top:-100px;
-  right:-100px;
-
-  background:#00e5ff;
-
-  filter:blur(75px);
-
-  opacity:.15;
-
-  transition:.3s;
-}
-
-.card::after{
-  content:"";
-
-  position:absolute;
-
-  width:120px;
-  height:120px;
-
-  bottom:-80px;
-  left:-70px;
-
-  background:#ff2f92;
-
-  filter:blur(65px);
-
-  opacity:.10;
+  transition:.35s;
 }
 
 .card:hover{
   transform:
-    translateY(-8px)
+    translateY(-9px)
     scale(1.015);
 
   border-color:#00e5ff;
 
   box-shadow:
-    0 15px 40px rgba(0,0,0,.55),
+    0 15px 40px rgba(0,0,0,.6),
     0 0 8px #00e5ff,
-    0 0 25px rgba(0,229,255,.35),
-    0 0 50px rgba(124,77,255,.15);
+    0 0 25px rgba(0,229,255,.4),
+    0 0 45px rgba(124,77,255,.2);
 }
 
-.card:hover::before{
-  opacity:.35;
+
+/* IMAGE */
+
+.imgbox{
+  position:relative;
 }
 
 .card img,
 .imgbox > div{
   width:100%;
-  height:210px;
+  height:220px;
 
   object-fit:cover;
 
-  border-radius:15px;
+  border-radius:5px;
 
-  background:#0b1322;
+  border:1px solid #25465e;
 
-  border:1px solid #253852;
+  background:#080d18;
 
   box-shadow:
     0 0 8px rgba(0,229,255,.12);
 
-  transition:.3s;
+  transition:.35s;
 }
 
 .card:hover img{
@@ -418,69 +388,76 @@ select:focus{
 
   box-shadow:
     0 0 8px #00e5ff,
-    0 0 20px rgba(0,229,255,.25);
+    0 0 25px rgba(0,229,255,.35);
+
+  transform:scale(1.015);
 }
 
+
+/* PRODUCT NAME */
+
 .card h2{
-  margin:17px 5px 8px;
+  margin:18px 5px 8px;
 
   font-size:19px;
   line-height:1.3;
 
-  color:#f1f8ff;
+  color:#f2f8ff;
 
   text-shadow:
-    0 0 7px rgba(255,255,255,.18);
+    0 0 7px rgba(255,255,255,.2);
 }
 
-.price{
-  margin:8px 5px 17px;
 
-  font-size:28px;
-  font-weight:900;
+/* PRICE */
+
+.price{
+  margin:8px 5px 18px;
 
   color:#00e5ff;
 
+  font-size:29px;
+  font-weight:900;
+
   text-shadow:
-    0 0 5px #00e5ff,
-    0 0 15px rgba(0,229,255,.55);
+    0 0 6px #00e5ff,
+    0 0 17px rgba(0,229,255,.6);
 }
 
 
-/* TELEGRAM BUTTON */
+/* BUY BUTTON */
 
 button{
   position:relative;
+  overflow:hidden;
 
   width:100%;
 
+  padding:16px;
+
   border:1px solid #00e5ff;
-
-  border-radius:13px;
-
-  padding:15px;
+  border-radius:5px;
 
   cursor:pointer;
 
-  color:#021016;
+  color:#02080d;
 
   background:
     linear-gradient(
       90deg,
       #00e5ff,
-      #19f5b5
+      #00ffc8
     );
 
-  font-size:16px;
-  font-weight:900;
+  font-size:17px;
+  font-weight:1000;
+  letter-spacing:1px;
 
   box-shadow:
-    0 0 7px rgba(0,229,255,.7),
-    0 0 20px rgba(0,229,255,.2);
+    0 0 8px #00e5ff,
+    0 0 20px rgba(0,229,255,.3);
 
   transition:.25s;
-
-  overflow:hidden;
 }
 
 button::before{
@@ -489,7 +466,7 @@ button::before{
   position:absolute;
 
   top:0;
-  left:-120%;
+  left:-130%;
 
   width:70%;
   height:100%;
@@ -498,17 +475,17 @@ button::before{
     linear-gradient(
       90deg,
       transparent,
-      rgba(255,255,255,.7),
+      rgba(255,255,255,.85),
       transparent
     );
 
-  transform:skewX(-20deg);
+  transform:skewX(-25deg);
 
   transition:.5s;
 }
 
 button:hover::before{
-  left:150%;
+  left:160%;
 }
 
 button:hover{
@@ -516,12 +493,12 @@ button:hover{
 
   box-shadow:
     0 0 10px #00e5ff,
-    0 0 25px rgba(0,229,255,.55),
-    0 0 45px rgba(25,245,181,.25);
+    0 0 25px #00e5ff,
+    0 0 45px rgba(0,255,200,.3);
 }
 
 button:active{
-  transform:scale(.97);
+  transform:scale(.96);
 }
 
 
@@ -532,21 +509,22 @@ footer{
 
   text-align:center;
 
-  color:#697996;
+  color:#667894;
 
-  border-top:1px solid #1e334b;
+  border-top:1px solid #16334a;
 
-  background:#03060b;
+  background:#02040a;
 
   box-shadow:
-    0 -5px 25px rgba(0,229,255,.06);
+    0 -5px 25px rgba(0,229,255,.08);
 }
 
 footer strong{
   color:#00e5ff;
 
   text-shadow:
-    0 0 6px #00e5ff;
+    0 0 6px #00e5ff,
+    0 0 15px rgba(0,229,255,.5);
 }
 
 
@@ -614,21 +592,18 @@ footer strong{
       NOPKIRI LIVERY SHOP
 
       <span>
-        CREATIVE GAME VEHICLES
+        CYBER GAMING STORE
       </span>
 
     </div>
 
-
     <div class="title">
-      GAMING LIVERY MARKET
+      // PREMIUM LIVERY MARKET //
     </div>
-
 
     <div class="cart">
-      💙
+      🛒
     </div>
-
 
     <div class="menu">
       ☰
@@ -642,20 +617,19 @@ footer strong{
 
 <section class="hero">
 
-  <div class="tag">
-    ⚡ PREMIUM GAMING LIVERY
+  <div class="cyber-label">
+    ⚡ SYSTEM ONLINE • LIVERY MARKET
   </div>
 
-
   <h1>
-    GAME VEHICLES<br>
-    &amp; LIVERY
+    CYBER<br>
+    LIVERY
   </h1>
 
-
   <p>
-    Discover premium vehicle liveries and creative
-    racing designs for your favorite games.
+    Enter the Nopkiri Cyber Gaming Store.
+    Discover premium racing liveries and
+    futuristic game vehicle designs.
   </p>
 
 </section>
@@ -666,10 +640,9 @@ footer strong{
 
   <input
     id="search"
-    placeholder="🔍 Search vehicles..."
+    placeholder="🔍 SEARCH VEHICLES..."
     oninput="renderProducts()"
   >
-
 
   <select
     id="sort"
@@ -677,15 +650,15 @@ footer strong{
   >
 
     <option value="default">
-      ⚡ Sort Products
+      ⚡ SORT PRODUCTS
     </option>
 
     <option value="low">
-      💰 Price: Low to High
+      💰 PRICE: LOW → HIGH
     </option>
 
     <option value="high">
-      💎 Price: High to Low
+      💎 PRICE: HIGH → LOW
     </option>
 
   </select>
@@ -709,7 +682,7 @@ footer strong{
     Nopkiri Livery Shop
   </strong>
 
-  · Gaming Livery Store
+  · CYBER GAMING
 
 </footer>
 
@@ -751,13 +724,11 @@ function renderProducts(){
 
   let list = [...products];
 
-
   const q =
     document
       .getElementById("search")
       .value
       .toLowerCase();
-
 
   const sort =
     document
@@ -801,7 +772,6 @@ function renderProducts(){
 
       <article class="card">
 
-
         <div class="imgbox">
 
           ${
@@ -812,6 +782,7 @@ function renderProducts(){
             `<img
               src="${p.image}"
               alt="${p.name}"
+              loading="lazy"
             >`
 
             :
@@ -843,14 +814,13 @@ function renderProducts(){
 
         <button
           onclick="
-            payViaTelegram(
+            buyProduct(
               ${products.indexOf(p)}
             )
           "
         >
-          💙 PAY VIA TELEGRAM
+          🛒 BUY
         </button>
-
 
       </article>
 
@@ -860,16 +830,17 @@ function renderProducts(){
 
 
 
-function payViaTelegram(i){
+function buyProduct(i){
 
   const product =
     products[i];
 
 
   const message =
-    "Hello, I want to buy: " +
+    "Hello Nopkiri Livery Shop!%0A%0A" +
+    "🛒 I want to BUY:%0A" +
     product.name +
-    " - " +
+    "%0A💰 Price: " +
     money(product.price);
 
 
