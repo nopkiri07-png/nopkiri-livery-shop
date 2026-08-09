@@ -30,7 +30,7 @@ header{
   position:sticky;
   top:0;
   z-index:100;
-  background:rgba(5,7,15,.88);
+  background:rgba(5,7,15,.9);
   backdrop-filter:blur(14px);
   border-bottom:1px solid rgba(0,229,255,.25);
   box-shadow:0 0 25px rgba(0,229,255,.12);
@@ -59,7 +59,6 @@ header{
   font-size:9px;
   letter-spacing:2px;
   color:#8d9ab8;
-  text-shadow:none;
   margin-top:3px;
 }
 
@@ -75,11 +74,6 @@ header{
   position:relative;
   font-size:27px;
   cursor:pointer;
-  transition:.2s;
-}
-
-.cart:hover{
-  transform:scale(1.12);
 }
 
 .badge{
@@ -134,7 +128,6 @@ header{
   -webkit-background-clip:text;
   background-clip:text;
   color:transparent;
-  text-shadow:none;
 }
 
 .hero p{
@@ -164,7 +157,6 @@ select{
   color:#fff;
   font-size:16px;
   outline:none;
-  transition:.2s;
 }
 
 input::placeholder{
@@ -199,18 +191,6 @@ select:focus{
   transition:.25s;
 }
 
-.card::before{
-  content:"";
-  position:absolute;
-  width:120px;
-  height:120px;
-  top:-70px;
-  right:-70px;
-  background:#00e5ff;
-  filter:blur(65px);
-  opacity:.16;
-}
-
 .card:hover{
   transform:translateY(-6px);
   border-color:#00e5ff;
@@ -240,10 +220,9 @@ select:focus{
   font-size:27px;
   font-weight:900;
   color:#00e5ff;
-  text-shadow:0 0 10px rgba(0,229,255,.25);
 }
 
-/* BUTTON */
+/* TELEGRAM BUTTON */
 button{
   width:100%;
   border:0;
@@ -255,7 +234,6 @@ button{
   font-size:16px;
   font-weight:900;
   transition:.2s;
-  box-shadow:0 7px 20px rgba(0,229,255,.15);
 }
 
 button:hover{
@@ -356,10 +334,6 @@ footer strong{
   .grid{
     grid-template-columns:1fr;
   }
-
-  .card{
-    border-radius:18px;
-  }
 }
 </style>
 </head>
@@ -367,6 +341,7 @@ footer strong{
 <body>
 
 <header>
+
   <div class="nav">
 
     <div class="logo">
@@ -378,14 +353,16 @@ footer strong{
       GAMING LIVERY MARKET
     </div>
 
-    <div class="cart" onclick="showCart()">
-      🛍️
-      <span class="badge" id="count">0</span>
+    <div class="cart">
+      💙
     </div>
 
-    <div class="menu">☰</div>
+    <div class="menu">
+      ☰
+    </div>
 
   </div>
+
 </header>
 
 
@@ -417,9 +394,19 @@ footer strong{
   >
 
   <select id="sort" onchange="renderProducts()">
-    <option value="default">⚡ Sort Products</option>
-    <option value="low">💰 Price: Low to High</option>
-    <option value="high">💎 Price: High to Low</option>
+
+    <option value="default">
+      ⚡ Sort Products
+    </option>
+
+    <option value="low">
+      💰 Price: Low to High
+    </option>
+
+    <option value="high">
+      💎 Price: High to Low
+    </option>
+
   </select>
 
 </div>
@@ -430,7 +417,9 @@ footer strong{
 
 <section class="aba">
 
-  <h2>💙 ABA BANK PAYMENT</h2>
+  <h2>
+    💙 ABA BANK PAYMENT
+  </h2>
 
   <p class="note">
     Currency: <strong>USD ($)</strong>
@@ -452,8 +441,11 @@ footer strong{
 
 
 <footer>
-  © 2026 <strong>Nopkiri Livery Shop</strong>
+
+  © 2026
+  <strong>Nopkiri Livery Shop</strong>
   · Gaming Livery Store
+
 </footer>
 
 
@@ -482,11 +474,10 @@ const products = [
 ];
 
 
-let cart = [];
-
-
 function money(n){
+
   return "$" + n.toFixed(2);
+
 }
 
 
@@ -521,6 +512,7 @@ function renderProducts(){
 
 
   document.getElementById("products").innerHTML =
+
     list.map(p => `
 
       <article class="card">
@@ -561,9 +553,9 @@ function renderProducts(){
 
 
         <button
-          onclick="addToCart(${products.indexOf(p)})"
+          onclick="payViaTelegram(${products.indexOf(p)})"
         >
-          🛒 ADD TO CART
+          💙 PAY VIA TELEGRAM
         </button>
 
       </article>
@@ -573,47 +565,21 @@ function renderProducts(){
 }
 
 
-function addToCart(i){
+function payViaTelegram(i){
 
-  cart.push(products[i]);
+  const product = products[i];
 
-  document.getElementById("count").textContent =
-    cart.length;
+  const message =
+    "Hello, I want to buy: " +
+    product.name +
+    " - " +
+    money(product.price);
 
-  alert(
-    products[i].name +
-    " added to cart."
-  );
+  const telegramURL =
+    "https://t.me/nopkiri168?text=" +
+    encodeURIComponent(message);
 
-}
-
-
-function showCart(){
-
-  if(!cart.length){
-
-    alert("🛒 Your cart is empty.");
-
-    return;
-  }
-
-
-  const total =
-    cart.reduce(
-      (s,p)=>s+p.price,
-      0
-    );
-
-
-  alert(
-    "🛒 Items: " +
-    cart.length +
-
-    "\n💰 Total: " +
-    money(total) +
-
-    "\n\n💙 For ABA Bank payment, contact the seller."
-  );
+  window.location.href = telegramURL;
 
 }
 
