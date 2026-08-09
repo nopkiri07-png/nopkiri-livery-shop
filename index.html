@@ -1,133 +1,627 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Nopkiri Livery Shop</title>
+
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f5f5f5;color:#222}
-header{background:#176b9c;color:white;position:sticky;top:0;z-index:10}
-.nav{max-width:1200px;margin:auto;min-height:78px;display:flex;align-items:center;gap:18px;padding:12px 20px}
-.logo{font-weight:800;font-size:22px;white-space:nowrap}
-.logo span{display:block;font-size:11px;opacity:.8}
-.title{font-size:20px;font-weight:700;text-align:center;flex:1}
-.cart{font-size:28px;position:relative;cursor:pointer}
-.badge{position:absolute;top:-8px;right:-10px;background:#ef4444;border-radius:50%;font-size:13px;padding:5px 9px}
-.menu{font-size:30px}
-.hero{text-align:center;padding:48px 18px 28px}
-.hero h1{font-size:42px;margin:0 0 20px}
-.hero p{font-size:22px;color:#666;max-width:760px;margin:auto;line-height:1.45}
-.controls{max-width:1100px;margin:28px auto;display:flex;gap:20px;padding:0 20px}
-input,select{width:100%;padding:18px;border:2px solid #ddd;border-radius:16px;background:white;font-size:20px}
-.grid{max-width:1100px;margin:0 auto;padding:10px 20px 60px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
-.card{background:white;border-radius:22px;padding:16px;box-shadow:0 8px 25px #00000012}
-.card img{width:100%;height:210px;object-fit:cover;border-radius:16px;background:#eee}
-.card h2{font-size:21px;margin:18px 4px 10px}
-.price{font-size:28px;margin:12px 4px 18px;font-weight:700}
-button{border:0;border-radius:14px;background:#176b9c;color:white;font-size:19px;font-weight:700;padding:16px;width:100%;cursor:pointer}
-button:active{transform:scale(.99)}
-.aba{margin:0 auto 50px;max-width:700px;background:white;border-radius:20px;padding:24px;text-align:center;box-shadow:0 8px 25px #00000010}
-.aba h2{margin-top:0}
-.note{color:#666;line-height:1.5}
-footer{background:#176b9c;color:white;text-align:center;padding:24px}
-@media(max-width:600px){
- .nav{min-height:76px;padding:10px 14px}
- .logo{font-size:18px}.title{font-size:17px}
- .hero h1{font-size:34px}.hero p{font-size:19px}
- .controls{flex-direction:column}
- .grid{grid-template-columns:1fr}
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:
+    radial-gradient(circle at top,#18213d 0,#080b16 45%,#05060b 100%);
+  color:#fff;
+  min-height:100vh;
+}
+
+/* HEADER */
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(5,7,15,.88);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(0,229,255,.25);
+  box-shadow:0 0 25px rgba(0,229,255,.12);
+}
+
+.nav{
+  max-width:1200px;
+  min-height:76px;
+  margin:auto;
+  padding:12px 18px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+.logo{
+  font-weight:900;
+  font-size:21px;
+  color:#00e5ff;
+  white-space:nowrap;
+  text-shadow:0 0 12px rgba(0,229,255,.7);
+}
+
+.logo span{
+  display:block;
+  font-size:9px;
+  letter-spacing:2px;
+  color:#8d9ab8;
+  text-shadow:none;
+  margin-top:3px;
+}
+
+.title{
+  flex:1;
+  text-align:center;
+  font-weight:800;
+  font-size:17px;
+  color:#dce7ff;
+}
+
+.cart{
+  position:relative;
+  font-size:27px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.cart:hover{
+  transform:scale(1.12);
+}
+
+.badge{
+  position:absolute;
+  top:-9px;
+  right:-10px;
+  min-width:21px;
+  height:21px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#ff245c;
+  border:2px solid #080b16;
+  border-radius:50%;
+  font-size:11px;
+  font-weight:900;
+}
+
+.menu{
+  font-size:26px;
+  color:#00e5ff;
+}
+
+/* HERO */
+.hero{
+  max-width:1000px;
+  margin:auto;
+  text-align:center;
+  padding:65px 18px 35px;
+}
+
+.hero .tag{
+  display:inline-block;
+  padding:8px 15px;
+  border:1px solid rgba(0,229,255,.45);
+  border-radius:30px;
+  color:#00e5ff;
+  background:rgba(0,229,255,.06);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:2px;
+  margin-bottom:20px;
+}
+
+.hero h1{
+  margin:0;
+  font-size:clamp(38px,8vw,68px);
+  font-weight:1000;
+  line-height:1;
+  letter-spacing:-2px;
+  background:linear-gradient(90deg,#00e5ff,#7c4dff,#ff2f92);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  text-shadow:none;
+}
+
+.hero p{
+  max-width:700px;
+  margin:22px auto 0;
+  color:#9ba8c7;
+  font-size:18px;
+  line-height:1.6;
+}
+
+/* CONTROLS */
+.controls{
+  max-width:1100px;
+  margin:20px auto 30px;
+  padding:0 18px;
+  display:flex;
+  gap:14px;
+}
+
+input,
+select{
+  width:100%;
+  padding:16px 18px;
+  border-radius:14px;
+  border:1px solid #273454;
+  background:#0d1222;
+  color:#fff;
+  font-size:16px;
+  outline:none;
+  transition:.2s;
+}
+
+input::placeholder{
+  color:#64708d;
+}
+
+input:focus,
+select:focus{
+  border-color:#00e5ff;
+  box-shadow:0 0 15px rgba(0,229,255,.15);
+}
+
+/* PRODUCTS */
+.grid{
+  max-width:1100px;
+  margin:auto;
+  padding:10px 18px 65px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+  gap:22px;
+}
+
+.card{
+  position:relative;
+  overflow:hidden;
+  padding:12px;
+  border:1px solid #263451;
+  border-radius:20px;
+  background:
+    linear-gradient(145deg,rgba(19,27,49,.96),rgba(8,11,21,.96));
+  box-shadow:0 15px 40px rgba(0,0,0,.35);
+  transition:.25s;
+}
+
+.card::before{
+  content:"";
+  position:absolute;
+  width:120px;
+  height:120px;
+  top:-70px;
+  right:-70px;
+  background:#00e5ff;
+  filter:blur(65px);
+  opacity:.16;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  border-color:#00e5ff;
+  box-shadow:
+    0 18px 45px rgba(0,0,0,.45),
+    0 0 25px rgba(0,229,255,.12);
+}
+
+.card img,
+.imgbox > div{
+  width:100%;
+  height:210px;
+  object-fit:cover;
+  border-radius:14px;
+  background:#10172a;
+}
+
+.card h2{
+  margin:17px 5px 8px;
+  font-size:19px;
+  line-height:1.3;
+  color:#f2f6ff;
+}
+
+.price{
+  margin:8px 5px 16px;
+  font-size:27px;
+  font-weight:900;
+  color:#00e5ff;
+  text-shadow:0 0 10px rgba(0,229,255,.25);
+}
+
+/* BUTTON */
+button{
+  width:100%;
+  border:0;
+  border-radius:12px;
+  padding:15px;
+  cursor:pointer;
+  color:#041017;
+  background:linear-gradient(90deg,#00e5ff,#19f5b5);
+  font-size:16px;
+  font-weight:900;
+  transition:.2s;
+  box-shadow:0 7px 20px rgba(0,229,255,.15);
+}
+
+button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 25px rgba(0,229,255,.28);
+}
+
+button:active{
+  transform:scale(.98);
+}
+
+/* ABA */
+.aba{
+  max-width:700px;
+  margin:0 auto 60px;
+  padding:28px 20px;
+  text-align:center;
+  border:1px solid #273858;
+  border-radius:22px;
+  background:linear-gradient(145deg,#111a31,#080c17);
+  box-shadow:0 15px 40px rgba(0,0,0,.4);
+}
+
+.aba h2{
+  margin-top:0;
+  color:#00e5ff;
+}
+
+.note{
+  color:#94a2c0;
+  line-height:1.6;
+}
+
+.qr{
+  width:min(280px,85%);
+  margin:12px auto;
+  display:block;
+  border-radius:15px;
+  border:4px solid white;
+  background:white;
+}
+
+/* FOOTER */
+footer{
+  padding:28px 18px;
+  text-align:center;
+  color:#687692;
+  border-top:1px solid #1c2740;
+  background:#05070d;
+}
+
+footer strong{
+  color:#00e5ff;
+}
+
+/* MOBILE */
+@media(max-width:650px){
+
+  .nav{
+    min-height:70px;
+    padding:10px 12px;
+    gap:10px;
+  }
+
+  .logo{
+    font-size:16px;
+  }
+
+  .logo span{
+    font-size:7px;
+    letter-spacing:1px;
+  }
+
+  .title{
+    display:none;
+  }
+
+  .menu{
+    font-size:23px;
+  }
+
+  .hero{
+    padding-top:50px;
+  }
+
+  .hero h1{
+    font-size:43px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  .controls{
+    flex-direction:column;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .card{
+    border-radius:18px;
+  }
 }
 </style>
 </head>
+
 <body>
 
 <header>
   <div class="nav">
-    <div class="logo">NOPKIRI LIVERY SHOP<span>CREATIVE GAME VEHICLES</span></div>
-    <div class="title">Various creative game vehicles, livery</div>
-    <div class="cart" onclick="showCart()">🛍️<span class="badge" id="count">0</span></div>
+
+    <div class="logo">
+      NOPKIRI LIVERY SHOP
+      <span>CREATIVE GAME VEHICLES</span>
+    </div>
+
+    <div class="title">
+      GAMING LIVERY MARKET
+    </div>
+
+    <div class="cart" onclick="showCart()">
+      🛍️
+      <span class="badge" id="count">0</span>
+    </div>
+
     <div class="menu">☰</div>
+
   </div>
 </header>
 
+
 <section class="hero">
-  <h1>Game Vehicles &amp; Livery</h1>
-  <p>Browse our collection and add your favorite designs to the cart.</p>
+
+  <div class="tag">
+    ⚡ PREMIUM GAMING LIVERY
+  </div>
+
+  <h1>
+    GAME VEHICLES<br>
+    &amp; LIVERY
+  </h1>
+
+  <p>
+    Discover premium vehicle liveries and creative racing designs
+    for your favorite games.
+  </p>
+
 </section>
 
+
 <div class="controls">
-  <input id="search" placeholder="Search vehicles..." oninput="renderProducts()">
+
+  <input
+    id="search"
+    placeholder="🔍 Search vehicles..."
+    oninput="renderProducts()"
+  >
+
   <select id="sort" onchange="renderProducts()">
-    <option value="default">Sort</option>
-    <option value="low">Price: Low to High</option>
-    <option value="high">Price: High to Low</option>
+    <option value="default">⚡ Sort Products</option>
+    <option value="low">💰 Price: Low to High</option>
+    <option value="high">💎 Price: High to Low</option>
   </select>
+
 </div>
+
 
 <main class="grid" id="products"></main>
 
+
 <section class="aba">
-  <h2>💙 ABA Bank Payment</h2>
-  <p class="note">Currency: <strong>USD ($)</strong></p>
-  <img class="qr" src="aba_qr.png" alt="ABA Bank QR Code">
-  <p class="note"><strong>Scan the QR code to pay via ABA Bank.</strong></p>
+
+  <h2>💙 ABA BANK PAYMENT</h2>
+
+  <p class="note">
+    Currency: <strong>USD ($)</strong>
+  </p>
+
+  <img
+    class="qr"
+    src="aba_qr.png"
+    alt="ABA Bank QR Code"
+  >
+
+  <p class="note">
+    <strong>
+      Scan the QR code to pay via ABA Bank.
+    </strong>
+  </p>
+
 </section>
 
-<footer>© 2026 Nopkiri Livery Shop</footer>
+
+<footer>
+  © 2026 <strong>Nopkiri Livery Shop</strong>
+  · Gaming Livery Store
+</footer>
+
 
 <script>
+
 const products = [
-  {name:"Mercedes AMG GT3 Racing", price:1.50, image:"mercedes_amg_gt3.png"},
-  {name:"Ford Mustang Formula Drift", price:2.00, image:"ford_mustang_formula_drift.png"},
-  {name:"Audi R8 GT3 Racing", price:1.60, image:"audi_r8_gt3_racing.png"}
+
+  {
+    name:"Mercedes AMG GT3 Racing",
+    price:1.50,
+    image:"mercedes_amg_gt3.png"
+  },
+
+  {
+    name:"Ford Mustang Formula Drift",
+    price:2.00,
+    image:"ford_mustang_formula_drift.png"
+  },
+
+  {
+    name:"Audi R8 GT3 Racing",
+    price:1.60,
+    image:"audi_r8_gt3_racing.png"
+  }
+
 ];
 
+
 let cart = [];
+
 
 function money(n){
   return "$" + n.toFixed(2);
 }
 
+
 function renderProducts(){
+
   let list = [...products];
-  const q = document.getElementById("search").value.toLowerCase();
-  const sort = document.getElementById("sort").value;
 
-  list = list.filter(p => p.name.toLowerCase().includes(q));
-  if(sort === "low") list.sort((a,b)=>a.price-b.price);
-  if(sort === "high") list.sort((a,b)=>b.price-a.price);
+  const q =
+    document
+      .getElementById("search")
+      .value
+      .toLowerCase();
 
-  document.getElementById("products").innerHTML = list.map((p,i)=>`
-    <article class="card">
-      <div class="imgbox">
-        ${p.image ? `<img src="${p.image}" alt="${p.name}">` :
-        `<div style="height:210px;border-radius:16px;background:#e9eef2;display:flex;align-items:center;justify-content:center;font-size:64px">🚗</div>`}
-      </div>
-      <h2>${p.name}</h2>
-      <div class="price">${money(p.price)}</div>
-      <button onclick="addToCart(${products.indexOf(p)})">Add to Bank</button>
-    </article>
-  `).join("");
+  const sort =
+    document
+      .getElementById("sort")
+      .value;
+
+
+  list = list.filter(p =>
+    p.name.toLowerCase().includes(q)
+  );
+
+
+  if(sort === "low"){
+    list.sort((a,b)=>a.price-b.price);
+  }
+
+  if(sort === "high"){
+    list.sort((a,b)=>b.price-a.price);
+  }
+
+
+  document.getElementById("products").innerHTML =
+    list.map(p => `
+
+      <article class="card">
+
+        <div class="imgbox">
+
+          ${
+            p.image
+
+            ? `<img
+                src="${p.image}"
+                alt="${p.name}"
+              >`
+
+            : `<div
+                style="
+                  display:flex;
+                  align-items:center;
+                  justify-content:center;
+                  font-size:64px;
+                "
+              >
+                🚗
+              </div>`
+          }
+
+        </div>
+
+
+        <h2>
+          ${p.name}
+        </h2>
+
+
+        <div class="price">
+          ${money(p.price)}
+        </div>
+
+
+        <button
+          onclick="addToCart(${products.indexOf(p)})"
+        >
+          🛒 ADD TO CART
+        </button>
+
+      </article>
+
+    `).join("");
+
 }
+
 
 function addToCart(i){
+
   cart.push(products[i]);
-  document.getElementById("count").textContent = cart.length;
-  alert(products[i].name + " added to cart.");
+
+  document.getElementById("count").textContent =
+    cart.length;
+
+  alert(
+    products[i].name +
+    " added to cart."
+  );
+
 }
+
 
 function showCart(){
+
   if(!cart.length){
-    alert("Your cart is empty.");
+
+    alert("🛒 Your cart is empty.");
+
     return;
   }
-  const total = cart.reduce((s,p)=>s+p.price,0);
-  alert("Items: " + cart.length + "\\nTotal: " + money(total) +
-        "\\n\\nFor ABA Bank payment, contact the seller.");
+
+
+  const total =
+    cart.reduce(
+      (s,p)=>s+p.price,
+      0
+    );
+
+
+  alert(
+    "🛒 Items: " +
+    cart.length +
+
+    "\n💰 Total: " +
+    money(total) +
+
+    "\n\n💙 For ABA Bank payment, contact the seller."
+  );
+
 }
 
+
 renderProducts();
+
 </script>
+
 </body>
 </html>
+```
