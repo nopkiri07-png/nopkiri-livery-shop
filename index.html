@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +8,7 @@
 <title>Nopkiri Livery Shop | Cyber Gaming</title>
 
 <style>
+
 *{
   box-sizing:border-box;
 }
@@ -22,10 +23,13 @@ body{
   color:#fff;
   min-height:100vh;
   overflow-x:hidden;
-  background:#03040a;
+  background:#02040a;
 }
 
-/* CYBER GRID BACKGROUND */
+
+/* =========================
+   CYBER GRID BACKGROUND
+========================= */
 
 body::before{
   content:"";
@@ -35,23 +39,37 @@ body::before{
   pointer-events:none;
 
   background:
-    linear-gradient(rgba(0,229,255,.035) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,229,255,.035) 1px,transparent 1px);
+    linear-gradient(
+      rgba(0,229,255,.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0,229,255,.035) 1px,
+      transparent 1px
+    );
 
   background-size:40px 40px;
+
   animation:gridMove 12s linear infinite;
 }
 
 @keyframes gridMove{
+
   from{
     background-position:0 0;
   }
+
   to{
     background-position:40px 40px;
   }
+
 }
 
-/* NEON LIGHTS */
+
+/* =========================
+   CYBER LIGHT
+========================= */
 
 body::after{
   content:"";
@@ -61,31 +79,52 @@ body::after{
   pointer-events:none;
 
   background:
-    radial-gradient(circle at 15% 20%,rgba(0,229,255,.18),transparent 25%),
-    radial-gradient(circle at 85% 30%,rgba(125,60,255,.18),transparent 27%),
-    radial-gradient(circle at 50% 90%,rgba(255,0,150,.12),transparent 30%);
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(0,229,255,.18),
+      transparent 25%
+    ),
+
+    radial-gradient(
+      circle at 85% 30%,
+      rgba(125,60,255,.18),
+      transparent 27%
+    ),
+
+    radial-gradient(
+      circle at 50% 90%,
+      rgba(255,0,150,.12),
+      transparent 30%
+    );
 
   animation:cyberPulse 5s ease-in-out infinite alternate;
 }
 
 @keyframes cyberPulse{
+
   from{
     opacity:.55;
   }
+
   to{
     opacity:1;
   }
+
 }
 
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
 header{
+
   position:sticky;
   top:0;
   z-index:100;
 
-  background:rgba(2,5,12,.84);
+  background:rgba(2,5,12,.86);
+
   backdrop-filter:blur(18px);
 
   border-bottom:1px solid #00e5ff;
@@ -93,46 +132,66 @@ header{
   box-shadow:
     0 0 10px rgba(0,229,255,.7),
     0 0 30px rgba(0,229,255,.15);
+
 }
 
 .nav{
+
   max-width:1200px;
   min-height:76px;
+
   margin:auto;
+
   padding:12px 18px;
 
   display:flex;
   align-items:center;
+
   gap:18px;
+
 }
 
 .logo{
+
   color:#00e5ff;
+
   font-size:21px;
+
   font-weight:900;
+
   white-space:nowrap;
 
   text-shadow:
     0 0 5px #00e5ff,
     0 0 15px #00e5ff,
     0 0 30px rgba(0,229,255,.5);
+
 }
 
 .logo span{
+
   display:block;
+
   margin-top:4px;
 
   color:#899bb8;
+
   font-size:9px;
+
   letter-spacing:2px;
+
 }
 
 .title{
+
   flex:1;
+
   text-align:center;
 
   font-size:16px;
+
   font-weight:900;
+
   letter-spacing:1px;
 
   color:#eafcff;
@@ -140,9 +199,11 @@ header{
   text-shadow:
     0 0 8px rgba(255,255,255,.7),
     0 0 18px #00e5ff;
+
 }
 
 .cart{
+
   font-size:27px;
 
   filter:
@@ -150,63 +211,88 @@ header{
     drop-shadow(0 0 15px #00e5ff);
 
   animation:cartGlow 2s infinite alternate;
+
 }
 
 @keyframes cartGlow{
+
   from{
     filter:drop-shadow(0 0 4px #00e5ff);
   }
+
   to{
+
     filter:
       drop-shadow(0 0 10px #00e5ff)
       drop-shadow(0 0 20px #7c4dff);
+
   }
+
 }
 
 .menu{
+
   color:#00e5ff;
+
   font-size:27px;
 
   text-shadow:
     0 0 8px #00e5ff,
     0 0 20px #00e5ff;
+
 }
 
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero{
+
   max-width:1000px;
+
   margin:auto;
+
   padding:75px 18px 45px;
+
   text-align:center;
+
 }
 
 .cyber-label{
+
   display:inline-block;
 
   padding:10px 18px;
 
   border:1px solid #00e5ff;
+
   border-radius:4px;
 
   color:#00e5ff;
+
   background:rgba(0,229,255,.05);
 
   font-size:11px;
+
   font-weight:900;
+
   letter-spacing:3px;
 
   box-shadow:
     0 0 8px #00e5ff,
     inset 0 0 10px rgba(0,229,255,.1);
+
 }
 
 .hero h1{
+
   margin:25px 0 18px;
 
   font-size:clamp(42px,9vw,76px);
+
   line-height:.95;
+
   font-weight:1000;
 
   background:
@@ -221,6 +307,7 @@ header{
   background-size:300% 100%;
 
   -webkit-background-clip:text;
+
   background-clip:text;
 
   color:transparent;
@@ -228,42 +315,61 @@ header{
   animation:titleMove 5s linear infinite;
 
   filter:
-    drop-shadow(0 0 8px rgba(0,229,255,.45));
+    drop-shadow(
+      0 0 8px
+      rgba(0,229,255,.45)
+    );
+
 }
 
 @keyframes titleMove{
+
   from{
     background-position:0 50%;
   }
+
   to{
     background-position:300% 50%;
   }
+
 }
 
 .hero p{
+
   max-width:720px;
+
   margin:auto;
 
   color:#9caccc;
+
   font-size:18px;
+
   line-height:1.6;
+
 }
 
 
-/* CONTROLS */
+/* =========================
+   CONTROLS
+========================= */
 
 .controls{
+
   max-width:1100px;
+
   margin:20px auto 30px;
 
   padding:0 18px;
 
   display:flex;
+
   gap:15px;
+
 }
 
 input,
 select{
+
   width:100%;
 
   padding:17px;
@@ -285,26 +391,35 @@ select{
     inset 0 0 12px rgba(0,229,255,.04);
 
   transition:.3s;
+
 }
 
 input:focus,
 select:focus{
+
   border-color:#00e5ff;
 
   box-shadow:
     0 0 8px #00e5ff,
     0 0 22px rgba(0,229,255,.3);
+
 }
 
 input::placeholder{
+
   color:#617493;
+
 }
 
 
-/* PRODUCT GRID */
+/* =========================
+   PRODUCT GRID
+========================= */
 
 .grid{
+
   max-width:1100px;
+
   margin:auto;
 
   padding:10px 18px 80px;
@@ -312,22 +427,31 @@ input::placeholder{
   display:grid;
 
   grid-template-columns:
-    repeat(auto-fit,minmax(270px,1fr));
+    repeat(
+      auto-fit,
+      minmax(270px,1fr)
+    );
 
   gap:25px;
+
 }
 
 
-/* PRODUCT CARD */
+/* =========================
+   PRODUCT CARD
+========================= */
 
 .card{
+
   position:relative;
+
   overflow:hidden;
 
   padding:12px;
 
   border:1px solid #1d4058;
-  border-radius:8px;
+
+  border-radius:10px;
 
   background:
     linear-gradient(
@@ -341,9 +465,11 @@ input::placeholder{
     0 0 8px rgba(0,229,255,.08);
 
   transition:.35s;
+
 }
 
 .card:hover{
+
   transform:
     translateY(-9px)
     scale(1.015);
@@ -355,25 +481,127 @@ input::placeholder{
     0 0 8px #00e5ff,
     0 0 25px rgba(0,229,255,.4),
     0 0 45px rgba(124,77,255,.2);
+
+}
+
+
+/* ==================================================
+   🚗 NEON ANIMATED IMAGE FRAME
+================================================== */
+
+.imgbox{
+
+  position:relative;
+
+  padding:3px;
+
+  border-radius:8px;
+
+  overflow:hidden;
+
+  background:#07101b;
+
+}
+
+
+/* rotating neon beam */
+
+.imgbox::before{
+
+  content:"";
+
+  position:absolute;
+
+  width:180%;
+
+  height:180%;
+
+  top:-40%;
+
+  left:-40%;
+
+  background:
+    conic-gradient(
+      transparent,
+      transparent 65%,
+      #00e5ff 73%,
+      #ffffff 76%,
+      #7c4dff 80%,
+      transparent 88%
+    );
+
+  animation:
+    neonRotate
+    2.4s
+    linear
+    infinite;
+
+}
+
+
+/* second glow layer */
+
+.imgbox::after{
+
+  content:"";
+
+  position:absolute;
+
+  inset:2px;
+
+  border-radius:6px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0,229,255,.12),
+      rgba(124,77,255,.10),
+      rgba(255,20,147,.08)
+    );
+
+  box-shadow:
+    inset 0 0 15px rgba(0,229,255,.3);
+
+  z-index:1;
+
+  pointer-events:none;
+
+}
+
+
+@keyframes neonRotate{
+
+  from{
+    transform:rotate(0deg);
+  }
+
+  to{
+    transform:rotate(360deg);
+  }
+
 }
 
 
 /* IMAGE */
 
-.imgbox{
-  position:relative;
-}
-
 .card img,
 .imgbox > div{
+
+  position:relative;
+
+  z-index:2;
+
+  display:block;
+
   width:100%;
+
   height:220px;
 
   object-fit:cover;
 
   border-radius:5px;
 
-  border:1px solid #25465e;
+  border:1px solid #17364c;
 
   background:#080d18;
 
@@ -381,54 +609,80 @@ input::placeholder{
     0 0 8px rgba(0,229,255,.12);
 
   transition:.35s;
+
 }
 
-.card:hover img{
-  border-color:#00e5ff;
+
+/* image hover */
+
+.card:hover .imgbox{
 
   box-shadow:
     0 0 8px #00e5ff,
-    0 0 25px rgba(0,229,255,.35);
+    0 0 20px rgba(0,229,255,.45),
+    0 0 35px rgba(124,77,255,.25);
 
-  transform:scale(1.015);
+}
+
+.card:hover img{
+
+  transform:scale(1.035);
+
+  border-color:#00e5ff;
+
 }
 
 
-/* PRODUCT NAME */
+/* =========================
+   PRODUCT NAME
+========================= */
 
 .card h2{
+
   margin:18px 5px 8px;
 
   font-size:19px;
+
   line-height:1.3;
 
   color:#f2f8ff;
 
   text-shadow:
-    0 0 7px rgba(255,255,255,.2);
+    0 0 7px
+    rgba(255,255,255,.2);
+
 }
 
 
-/* PRICE */
+/* =========================
+   PRICE
+========================= */
 
 .price{
+
   margin:8px 5px 18px;
 
   color:#00e5ff;
 
   font-size:29px;
+
   font-weight:900;
 
   text-shadow:
     0 0 6px #00e5ff,
     0 0 17px rgba(0,229,255,.6);
+
 }
 
 
-/* BUY BUTTON */
+/* =========================
+   BUY BUTTON
+========================= */
 
 button{
+
   position:relative;
+
   overflow:hidden;
 
   width:100%;
@@ -436,6 +690,7 @@ button{
   padding:16px;
 
   border:1px solid #00e5ff;
+
   border-radius:5px;
 
   cursor:pointer;
@@ -450,7 +705,9 @@ button{
     );
 
   font-size:17px;
+
   font-weight:1000;
+
   letter-spacing:1px;
 
   box-shadow:
@@ -458,17 +715,21 @@ button{
     0 0 20px rgba(0,229,255,.3);
 
   transition:.25s;
+
 }
 
 button::before{
+
   content:"";
 
   position:absolute;
 
   top:0;
+
   left:-130%;
 
   width:70%;
+
   height:100%;
 
   background:
@@ -482,29 +743,39 @@ button::before{
   transform:skewX(-25deg);
 
   transition:.5s;
+
 }
 
 button:hover::before{
+
   left:160%;
+
 }
 
 button:hover{
+
   transform:translateY(-3px);
 
   box-shadow:
     0 0 10px #00e5ff,
     0 0 25px #00e5ff,
     0 0 45px rgba(0,255,200,.3);
+
 }
 
 button:active{
+
   transform:scale(.96);
+
 }
 
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 footer{
+
   padding:30px 18px;
 
   text-align:center;
@@ -517,65 +788,113 @@ footer{
 
   box-shadow:
     0 -5px 25px rgba(0,229,255,.08);
+
 }
 
 footer strong{
+
   color:#00e5ff;
 
   text-shadow:
     0 0 6px #00e5ff,
     0 0 15px rgba(0,229,255,.5);
+
 }
 
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:650px){
 
   .nav{
+
     min-height:70px;
+
     padding:10px 12px;
+
     gap:10px;
+
   }
 
   .logo{
+
     font-size:16px;
+
   }
 
   .logo span{
+
     font-size:7px;
+
     letter-spacing:1px;
+
   }
 
   .title{
+
     display:none;
+
   }
 
   .menu{
+
     font-size:23px;
+
   }
 
   .hero{
+
     padding-top:55px;
+
   }
 
   .hero h1{
+
     font-size:44px;
+
   }
 
   .hero p{
+
     font-size:16px;
+
   }
 
   .controls{
+
     flex-direction:column;
+
   }
 
   .grid{
+
     grid-template-columns:1fr;
+
   }
 
 }
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media(prefers-reduced-motion:reduce){
+
+  *,
+  *::before,
+  *::after{
+
+    animation:none !important;
+
+    transition:none !important;
+
+  }
+
+}
+
 </style>
 </head>
 
@@ -597,13 +916,18 @@ footer strong{
 
     </div>
 
+
     <div class="title">
+
       // PREMIUM LIVERY MARKET //
+
     </div>
+
 
     <div class="cart">
       🛒
     </div>
+
 
     <div class="menu">
       ☰
@@ -618,18 +942,26 @@ footer strong{
 <section class="hero">
 
   <div class="cyber-label">
+
     ⚡ SYSTEM ONLINE • LIVERY MARKET
+
   </div>
 
+
   <h1>
+
     CYBER<br>
     LIVERY
+
   </h1>
 
+
   <p>
+
     Enter the Nopkiri Cyber Gaming Store.
     Discover premium racing liveries and
     futuristic game vehicle designs.
+
   </p>
 
 </section>
@@ -643,6 +975,7 @@ footer strong{
     placeholder="🔍 SEARCH VEHICLES..."
     oninput="renderProducts()"
   >
+
 
   <select
     id="sort"
@@ -724,11 +1057,13 @@ function renderProducts(){
 
   let list = [...products];
 
+
   const q =
     document
       .getElementById("search")
       .value
       .toLowerCase();
+
 
   const sort =
     document
@@ -772,6 +1107,7 @@ function renderProducts(){
 
       <article class="card">
 
+
         <div class="imgbox">
 
           ${
@@ -803,12 +1139,16 @@ function renderProducts(){
 
 
         <h2>
+
           ${p.name}
+
         </h2>
 
 
         <div class="price">
+
           ${money(p.price)}
+
         </div>
 
 
@@ -819,8 +1159,11 @@ function renderProducts(){
             )
           "
         >
+
           🛒 BUY
+
         </button>
+
 
       </article>
 
