@@ -27,8 +27,6 @@ body{
     radial-gradient(circle at 50% -10%,#173b55 0,#0a1220 35%,#03050a 75%);
 }
 
-/* ANIMATED NEON BACKGROUND */
-
 body::before{
   content:"";
   position:fixed;
@@ -103,10 +101,7 @@ header{
 
   font-size:9px;
   letter-spacing:2px;
-
   color:#9aa9c7;
-
-  text-shadow:0 0 8px rgba(0,229,255,.4);
 }
 
 .title{
@@ -115,7 +110,6 @@ header{
 
   font-size:17px;
   font-weight:800;
-
   color:#e8f8ff;
 
   text-shadow:
@@ -298,7 +292,7 @@ select:focus{
 }
 
 
-/* PRODUCT GRID */
+/* PRODUCTS */
 
 .grid{
   max-width:1100px;
@@ -453,7 +447,7 @@ select:focus{
 }
 
 
-/* BUTTON */
+/* TELEGRAM BUTTON */
 
 button{
   position:relative;
@@ -531,70 +525,6 @@ button:active{
 }
 
 
-/* ABA */
-
-.aba{
-  position:relative;
-
-  max-width:700px;
-
-  margin:0 auto 60px;
-
-  padding:30px 20px;
-
-  text-align:center;
-
-  border:1px solid #29405e;
-
-  border-radius:22px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(17,28,49,.95),
-      rgba(5,9,18,.97)
-    );
-
-  box-shadow:
-    0 10px 35px rgba(0,0,0,.5),
-    0 0 8px rgba(0,229,255,.12),
-    0 0 25px rgba(0,229,255,.08);
-}
-
-.aba h2{
-  margin-top:0;
-
-  color:#00e5ff;
-
-  text-shadow:
-    0 0 6px #00e5ff,
-    0 0 18px rgba(0,229,255,.55);
-}
-
-.note{
-  color:#9aaaca;
-  line-height:1.6;
-}
-
-.qr{
-  width:min(280px,85%);
-
-  margin:15px auto;
-
-  display:block;
-
-  border-radius:16px;
-
-  border:4px solid white;
-
-  background:white;
-
-  box-shadow:
-    0 0 10px rgba(255,255,255,.8),
-    0 0 25px rgba(0,229,255,.4);
-}
-
-
 /* FOOTER */
 
 footer{
@@ -665,20 +595,6 @@ footer strong{
 
   .grid{
     grid-template-columns:1fr;
-  }
-
-}
-
-
-/* REDUCED MOTION */
-
-@media(prefers-reduced-motion:reduce){
-
-  *,
-  *::before,
-  *::after{
-    animation:none !important;
-    transition:none !important;
   }
 
 }
@@ -785,38 +701,6 @@ footer strong{
 
 
 
-<section class="aba">
-
-  <h2>
-    💙 ABA BANK PAYMENT
-  </h2>
-
-
-  <p class="note">
-    Currency:
-    <strong>USD ($)</strong>
-  </p>
-
-
-  <img
-    class="qr"
-    src="aba_qr.png"
-    alt="ABA Bank QR Code"
-  >
-
-
-  <p class="note">
-
-    <strong>
-      Scan the QR code to pay via ABA Bank.
-    </strong>
-
-  </p>
-
-</section>
-
-
-
 <footer>
 
   © 2026
@@ -856,13 +740,11 @@ const products = [
 ];
 
 
-
 function money(n){
 
   return "$" + n.toFixed(2);
 
 }
-
 
 
 function renderProducts(){
