@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="km">
 <head>
@@ -25,7 +24,6 @@ body{
   overflow-x:hidden;
   background:#02040a;
 }
-
 
 /* =========================
    CYBER GRID
@@ -65,7 +63,6 @@ body::before{
   }
 
 }
-
 
 /* =========================
    CYBER LIGHT
@@ -111,7 +108,6 @@ body::after{
   }
 
 }
-
 
 /* =========================
    HEADER
@@ -242,10 +238,8 @@ header{
 
 }
 
-
 /* =========================
    RUNNING TEXT
-   ណុបគិរី
 ========================= */
 
 .marquee{
@@ -305,7 +299,6 @@ header{
   }
 
 }
-
 
 /* =========================
    HERO
@@ -412,7 +405,6 @@ header{
 
 }
 
-
 /* =========================
    SEARCH
 ========================= */
@@ -475,7 +467,6 @@ input::placeholder{
 
 }
 
-
 /* =========================
    PRODUCTS
 ========================= */
@@ -499,7 +490,6 @@ input::placeholder{
   gap:25px;
 
 }
-
 
 /* =========================
    CARD
@@ -548,7 +538,6 @@ input::placeholder{
 
 }
 
-
 /* =========================
    CAR IMAGE NEON
 ========================= */
@@ -566,9 +555,6 @@ input::placeholder{
   background:#07101b;
 
 }
-
-
-/* rotating light */
 
 .imgbox::before{
 
@@ -614,9 +600,6 @@ input::placeholder{
 
 }
 
-
-/* image glow */
-
 .imgbox::after{
 
   content:"";
@@ -643,9 +626,6 @@ input::placeholder{
   pointer-events:none;
 
 }
-
-
-/* image */
 
 .card img,
 .imgbox > div{
@@ -692,7 +672,6 @@ input::placeholder{
 
 }
 
-
 /* =========================
    NAME
 ========================= */
@@ -713,6 +692,32 @@ input::placeholder{
 
 }
 
+/* =========================
+   DESCRIPTION
+========================= */
+
+.description{
+
+  margin:8px 5px 16px;
+
+  padding:11px 10px;
+
+  border:1px solid #17364c;
+
+  border-radius:6px;
+
+  color:#b8c9df;
+
+  background:rgba(0,229,255,.035);
+
+  font-size:13px;
+
+  line-height:1.55;
+
+  box-shadow:
+    inset 0 0 10px rgba(0,229,255,.04);
+
+}
 
 /* =========================
    PRICE
@@ -733,7 +738,6 @@ input::placeholder{
     0 0 17px rgba(0,229,255,.6);
 
 }
-
 
 /* =========================
    BUY BUTTON
@@ -779,9 +783,6 @@ button{
   transition:.25s;
 
 }
-
-
-/* shine */
 
 button::before{
 
@@ -831,9 +832,6 @@ button::before{
 
 }
 
-
-/* pulse */
-
 @keyframes buyPulse{
 
   0%{
@@ -882,7 +880,6 @@ button:active{
 
 }
 
-
 /* =========================
    FOOTER
 ========================= */
@@ -913,7 +910,6 @@ footer strong{
     0 0 15px rgba(0,229,255,.5);
 
 }
-
 
 /* =========================
    MOBILE
@@ -989,7 +985,6 @@ footer strong{
 
 }
 
-
 /* =========================
    REDUCED MOTION
 ========================= */
@@ -1011,9 +1006,7 @@ footer strong{
 </style>
 </head>
 
-
 <body>
-
 
 <header>
 
@@ -1029,20 +1022,17 @@ footer strong{
 
     </div>
 
-
     <div class="title">
 
       // PREMIUM LIVERY MARKET //
 
     </div>
 
-
     <div class="cart">
 
       🛒
 
     </div>
-
 
     <div class="menu">
 
@@ -1053,7 +1043,6 @@ footer strong{
   </div>
 
 </header>
-
 
 <!-- =========================
      RUNNING TEXT
@@ -1069,7 +1058,6 @@ footer strong{
 
 </div>
 
-
 <section class="hero">
 
   <div class="cyber-label">
@@ -1078,7 +1066,6 @@ footer strong{
 
   </div>
 
-
   <h1>
 
     CYBER<br>
@@ -1086,7 +1073,6 @@ footer strong{
     LIVERY
 
   </h1>
-
 
   <p>
 
@@ -1100,7 +1086,6 @@ footer strong{
 
 </section>
 
-
 <div class="controls">
 
   <input
@@ -1112,7 +1097,6 @@ footer strong{
     oninput="renderProducts()"
 
   >
-
 
   <select
 
@@ -1128,13 +1112,11 @@ footer strong{
 
     </option>
 
-
     <option value="low">
 
       💰 PRICE: LOW → HIGH
 
     </option>
-
 
     <option value="high">
 
@@ -1146,7 +1128,6 @@ footer strong{
 
 </div>
 
-
 <main
 
   class="grid"
@@ -1154,7 +1135,6 @@ footer strong{
   id="products"
 
 ></main>
-
 
 <footer>
 
@@ -1169,7 +1149,6 @@ footer strong{
   · CYBER GAMING
 
 </footer>
-
 
 <script>
 
@@ -1191,6 +1170,14 @@ const products = [
     name:"Audi R8 GT3 Racing",
     price:1.60,
     image:"audi_r8_gt3_racing.png"
+  },
+
+  {
+    name:"Car Parking Account #4",
+    price:1.50,
+    image:"carparking_account_4.png",
+    description:
+      "💵 50M+ Cash • 🪙 134K+ Coins • 🔧 W16 • 📣 ស៊ីផ្លេ • 💨 ផ្សែង • 🏠 ផ្ទះ • 🚨 សារ៉ែនគ្រប់ឡាន"
   }
 
 ];
@@ -1207,7 +1194,6 @@ function renderProducts(){
 
   let list = [...products];
 
-
   const q =
 
     document
@@ -1218,7 +1204,6 @@ function renderProducts(){
 
       .toLowerCase();
 
-
   const sort =
 
     document
@@ -1226,7 +1211,6 @@ function renderProducts(){
       .getElementById("sort")
 
       .value;
-
 
   list =
 
@@ -1277,9 +1261,7 @@ function renderProducts(){
 
         <article class="card">
 
-
           <div class="imgbox">
-
 
             ${
 
@@ -1302,10 +1284,15 @@ function renderProducts(){
               `<div
 
                 style="
+
                   display:flex;
+
                   align-items:center;
+
                   justify-content:center;
+
                   font-size:64px;
+
                 "
 
               >
@@ -1316,9 +1303,7 @@ function renderProducts(){
 
             }
 
-
           </div>
-
 
           <h2>
 
@@ -1326,13 +1311,21 @@ function renderProducts(){
 
           </h2>
 
+          ${p.description ? `
+
+            <div class="description">
+
+              ${p.description}
+
+            </div>
+
+          ` : ""}
 
           <div class="price">
 
             ${money(p.price)}
 
           </div>
-
 
           <button
 
@@ -1348,10 +1341,9 @@ function renderProducts(){
 
           >
 
-            🛒 BUY
+            🛒 BUY ACCOUNT
 
           </button>
-
 
         </article>
 
@@ -1360,13 +1352,11 @@ function renderProducts(){
 }
 
 
-
 function buyProduct(i){
 
   const product =
 
     products[i];
-
 
   const message =
 
@@ -1380,13 +1370,11 @@ function buyProduct(i){
 
     money(product.price);
 
-
   const telegramURL =
 
     "https://t.me/nopkiri168?text=" +
 
     encodeURIComponent(message);
-
 
   window.location.href =
 
@@ -1399,8 +1387,5 @@ renderProducts();
 
 </script>
 
-
 </body>
-
 </html>
-```
