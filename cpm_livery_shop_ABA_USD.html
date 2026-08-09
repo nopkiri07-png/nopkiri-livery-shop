@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nopkiri Livery Shop</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f5f5f5;color:#222}
+header{background:#176b9c;color:white;position:sticky;top:0;z-index:10}
+.nav{max-width:1200px;margin:auto;min-height:78px;display:flex;align-items:center;gap:18px;padding:12px 20px}
+.logo{font-weight:800;font-size:22px;white-space:nowrap}
+.logo span{display:block;font-size:11px;opacity:.8}
+.title{font-size:20px;font-weight:700;text-align:center;flex:1}
+.cart{font-size:28px;position:relative;cursor:pointer}
+.badge{position:absolute;top:-8px;right:-10px;background:#ef4444;border-radius:50%;font-size:13px;padding:5px 9px}
+.menu{font-size:30px}
+.hero{text-align:center;padding:48px 18px 28px}
+.hero h1{font-size:42px;margin:0 0 20px}
+.hero p{font-size:22px;color:#666;max-width:760px;margin:auto;line-height:1.45}
+.controls{max-width:1100px;margin:28px auto;display:flex;gap:20px;padding:0 20px}
+input,select{width:100%;padding:18px;border:2px solid #ddd;border-radius:16px;background:white;font-size:20px}
+.grid{max-width:1100px;margin:0 auto;padding:10px 20px 60px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.card{background:white;border-radius:22px;padding:16px;box-shadow:0 8px 25px #00000012}
+.card img{width:100%;height:210px;object-fit:cover;border-radius:16px;background:#eee}
+.card h2{font-size:21px;margin:18px 4px 10px}
+.price{font-size:28px;margin:12px 4px 18px;font-weight:700}
+button{border:0;border-radius:14px;background:#176b9c;color:white;font-size:19px;font-weight:700;padding:16px;width:100%;cursor:pointer}
+button:active{transform:scale(.99)}
+.aba{margin:0 auto 50px;max-width:700px;background:white;border-radius:20px;padding:24px;text-align:center;box-shadow:0 8px 25px #00000010}
+.aba h2{margin-top:0}
+.note{color:#666;line-height:1.5}
+footer{background:#176b9c;color:white;text-align:center;padding:24px}
+@media(max-width:600px){
+ .nav{min-height:76px;padding:10px 14px}
+ .logo{font-size:18px}.title{font-size:17px}
+ .hero h1{font-size:34px}.hero p{font-size:19px}
+ .controls{flex-direction:column}
+ .grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">NOPKIRI LIVERY SHOP<span>CREATIVE GAME VEHICLES</span></div>
+    <div class="title">Various creative game vehicles, livery</div>
+    <div class="cart" onclick="showCart()">🛍️<span class="badge" id="count">0</span></div>
+    <div class="menu">☰</div>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>Game Vehicles &amp; Livery</h1>
+  <p>Browse our collection and add your favorite designs to the cart.</p>
+</section>
+
+<div class="controls">
+  <input id="search" placeholder="Search vehicles..." oninput="renderProducts()">
+  <select id="sort" onchange="renderProducts()">
+    <option value="default">Sort</option>
+    <option value="low">Price: Low to High</option>
+    <option value="high">Price: High to Low</option>
+  </select>
+</div>
+
+<main class="grid" id="products"></main>
+
+<section class="aba">
+  <h2>💙 ABA Bank Payment</h2>
+  <p class="note">Currency: <strong>USD ($)</strong></p>
+  <img class="qr" src="aba_qr.png" alt="ABA Bank QR Code">
+  <p class="note"><strong>Scan the QR code to pay via ABA Bank.</strong></p>
+</section>
+
+<footer>© 2026 Nopkiri Livery Shop</footer>
+
+<script>
+const products = [
+  {name:"Mercedes AMG GT3 Racing", price:1.50, image:"mercedes_amg_gt3.png"},
+  {name:"Ford Mustang Formula Drift", price:2.00, image:"ford_mustang_formula_drift.png"},
+  {name:"Audi R8 GT3 Racing", price:1.60, image:"audi_r8_gt3_racing.png"}
+];
+
+let cart = [];
+
+function money(n){
+  return "$" + n.toFixed(2);
+}
+
+function renderProducts(){
+  let list = [...products];
+  const q = document.getElementById("search").value.toLowerCase();
+  const sort = document.getElementById("sort").value;
+
+  list = list.filter(p => p.name.toLowerCase().includes(q));
+  if(sort === "low") list.sort((a,b)=>a.price-b.price);
+  if(sort === "high") list.sort((a,b)=>b.price-a.price);
+
+  document.getElementById("products").innerHTML = list.map((p,i)=>`
+    <article class="card">
+      <div class="imgbox">
+        ${p.image ? `<img src="${p.image}" alt="${p.name}">` :
+        `<div style="height:210px;border-radius:16px;background:#e9eef2;display:flex;align-items:center;justify-content:center;font-size:64px">🚗</div>`}
+      </div>
+      <h2>${p.name}</h2>
+      <div class="price">${money(p.price)}</div>
+      <button onclick="addToCart(${products.indexOf(p)})">Add to Bank</button>
+    </article>
+  `).join("");
+}
+
+function addToCart(i){
+  cart.push(products[i]);
+  document.getElementById("count").textContent = cart.length;
+  alert(products[i].name + " added to cart.");
+}
+
+function showCart(){
+  if(!cart.length){
+    alert("Your cart is empty.");
+    return;
+  }
+  const total = cart.reduce((s,p)=>s+p.price,0);
+  alert("Items: " + cart.length + "\\nTotal: " + money(total) +
+        "\\n\\nFor ABA Bank payment, contact the seller.");
+}
+
+renderProducts();
+</script>
+</body>
+</html>
